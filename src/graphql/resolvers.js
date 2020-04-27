@@ -65,7 +65,7 @@ const resolvers = {
 
       const secret = Config.get(ConfigKeys.SECRET).replace(/\\n/gi, '\n');
       const payload = { iss: 'flynn', roles: ['user'], uid: userDoc.id };
-      const token = jwt.sign(payload, secret, { algorithm: ConfigKeys.SIGN_ALGORITHM });
+      const token = jwt.sign(payload, secret, { algorithm: Config.get(ConfigKeys.SIGN_ALGORITHM) });
       return {
         id: userDoc.id,
         token,
@@ -102,7 +102,7 @@ const resolvers = {
 
       const secret = Config.get(ConfigKeys.SECRET).replace(/\\n/gi, '\n');
       const payload = { iss: 'flynn', roles: ['user'], uid: userDoc.id };
-      const token = jwt.sign(payload, secret, { algorithm: ConfigKeys.SIGN_ALGORITHM });
+      const token = jwt.sign(payload, secret, { algorithm: Config.get(ConfigKeys.SIGN_ALGORITHM) });
       return {
         id: userDoc.id,
         token,
